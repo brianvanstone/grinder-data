@@ -10,3 +10,9 @@ Keep an eye on your spending, habits, and trends.
 
 ### The Endless Possibilities!
 Ok not really, the application is pretty specfic.
+
+### //TODO
+- Web App
+- Mobile App
+- Prototype Grinder
+- Campaign and Materials
