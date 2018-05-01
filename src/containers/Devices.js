@@ -1,8 +1,6 @@
-import React from "react";
-import AuthenticatedComponent from "./common/AuthenticatedComponent";
+import React, { Component } from "react";
 
-export default class Devices extends AuthenticatedComponent {
-
+export default class Devices extends Component {
     render() {
         return (
             <div className="App container">

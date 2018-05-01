@@ -1,7 +1,6 @@
-import React from "react";
-import AuthenticatedComponent from "./common/AuthenticatedComponent";
+import React, { Component } from "react";
 
-export default class Profile extends AuthenticatedComponent {
+export default class Profile extends Component {
 
     render() {
         return (

@@ -78,11 +78,29 @@ export default class Auth extends Component {
     scheduleRenewal() {
         const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
         const delay = expiresAt - Date.now();
-        console.log("Scheduling renewal in " + delay + " ms");
         if (delay > 0) {
             this.tokenRenewalTimeout = setTimeout(() => {
                 this.renewToken();
             }, delay);
+        }
+    }
+
+    getProfile(cb) {
+        var authClient = new auth0.WebAuth({
+            domain: 'grinder.auth0.com',
+            clientID: 'aJh7jg1toaADHOTncRWHKxk7ttT3PNI5',
+            audience: 'https://grinder.auth0.com/userinfo',
+            scope: 'openid'
+        });
+        let session = this.getSession()
+        if (session.access_token) {
+            authClient.client.userInfo(session.access_token, (err, userProfile) => {
+                if (userProfile) {
+                    cb(null, userProfile);
+                } else {
+                    cb(err);
+                }
+            });
         }
     }
 

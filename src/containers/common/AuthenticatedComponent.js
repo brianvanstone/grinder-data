@@ -9,8 +9,21 @@ export default class AuthenticatedComponent extends React.Component {
         super(props);
 
         this.state = {
-            displayed: false
+            displayed: false,
+            profile: {}
         };
+    }
+
+    componentWillMount() {
+        if (!this.state.profile.sub) {
+            auth.getProfile((err, userProfile) => {
+                if (err) {
+                    //squash
+                } else {
+                    this.setState({profile: userProfile});
+                }
+            });
+        }
     }
 
     logout(path) {

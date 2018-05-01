@@ -10,7 +10,6 @@ import Devices from "../Devices";
 import { LinkContainer } from 'react-router-bootstrap';
 
 export default class AuthLayout extends AuthenticatedComponent {
-
     render() {
         if (this.state.displayed) {
             return (
@@ -45,7 +44,7 @@ export default class AuthLayout extends AuthenticatedComponent {
                     <div id="content">
                         <Switch>
                             <Route path="/dashboard" component={Dashboard} />
-                            <Route path="/profile" component={Profile} />
+                            <Route path="/profile" render={(props) => <Profile {...props} profile={this.state.profile} />} />
                             <Route path="/devices" component={Devices} />
                         </Switch>
                     </div>
