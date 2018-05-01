@@ -12,7 +12,11 @@ Keep an eye on your spending, habits, and trends.
 Ok not really, the application is pretty specfic.
 
 ### //TODO
+- Slack Channel
 - Web App
-- Mobile App
 - Prototype Grinder
-- Campaign and Materials
+- Mobile App
+- AWS Account
+- Domain
+- LLC
+- Campaign and Marketing Materials
