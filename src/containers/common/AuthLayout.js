@@ -34,18 +34,16 @@ export default class AuthLayout extends AuthenticatedComponent {
                                 </LinkContainer>
                             </Nav>
                             <Nav pullRight>
-                                {/* <LinkContainer to=""> */}
-                                    <NavItem onClick={() => this.logout('/')}>Logout</NavItem>
-                                {/* </LinkContainer> */}
+                                <NavItem onClick={() => this.logout('/')}>Logout</NavItem>
                                 <NavItem href="https://github.com/brianvanstone/grinder-data"><img src="github.png" alt="github" /></NavItem>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
                     <div id="content">
                         <Switch>
-                            <Route path="/dashboard" component={Dashboard} />
-                            <Route path="/profile" render={(props) => <Profile {...props} profile={this.state.profile} />} />
-                            <Route path="/devices" component={Devices} />
+                            <Route path="/dashboard" render={(props) => <Dashboard {...props} user={this.state.userData} />} />
+                            <Route path="/profile" render={(props) => <Profile {...props} user={this.state.userData} />} />
+                            <Route path="/devices" render={(props) => <Devices {...props} user={this.state.userData} />} />
                         </Switch>
                     </div>
                 </div>
