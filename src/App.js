@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch } from "react-router-dom";
-import Home from "./containers/Home";
 import AuthLayout from "./containers/common/AuthLayout";
 import Auth from "./Auth";
-import NotFound from "./containers/NotFound";
+import PublicLayout from "./containers/common/PublicLayout";
 
 class App extends Component {
 
@@ -14,8 +13,7 @@ class App extends Component {
         <Route path="/dashboard" component={AuthLayout} />
         <Route path="/profile" component={AuthLayout} />
         <Route path="/devices" component={AuthLayout} />
-        <Route path="/" exact component={Home} />
-        <Route path="*" component={NotFound} />
+        <Route path="*" component={PublicLayout} />
       </Switch>
     );
   }
