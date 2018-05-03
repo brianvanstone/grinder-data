@@ -18,7 +18,7 @@ export default class Auth extends Component {
             redirectUri: 'http://localhost:3000/auth?redirect=' + path,
             audience: 'https://grinder.auth0.com/userinfo',
             responseType: 'token id_token',
-            scope: 'openid'
+            scope: 'openid profile'
         };
     };
 
@@ -90,7 +90,7 @@ export default class Auth extends Component {
             domain: 'grinder.auth0.com',
             clientID: 'aJh7jg1toaADHOTncRWHKxk7ttT3PNI5',
             audience: 'https://grinder.auth0.com/userinfo',
-            scope: 'openid'
+            scope: 'openid profile'
         });
         let session = this.getSession()
         if (session.access_token) {

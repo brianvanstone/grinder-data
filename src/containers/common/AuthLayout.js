@@ -45,6 +45,9 @@ export default class AuthLayout extends AuthenticatedComponent {
                             <Route path="/devices" render={(props) => <Devices {...props} user={this.state.userData} />} />
                         </Switch>
                     </div>
+                    <div>
+                        <pre><code>{JSON.stringify(this.state)}</code></pre>
+                    </div>
                 </div>
             );
         } else {

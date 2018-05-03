@@ -12,7 +12,7 @@ export default class AuthenticatedComponent extends React.Component {
 
         this.state = {
             displayed: false,
-            userId: "",
+            authProfile: "",
             userData: ""
         };
 
@@ -20,7 +20,7 @@ export default class AuthenticatedComponent extends React.Component {
             if (err) {
                 //squash
             } else {
-                this.setState({ userId: userProfile.sub });
+                this.setState({ authProfile: userProfile });
             }
         });
     }
@@ -43,14 +43,14 @@ export default class AuthenticatedComponent extends React.Component {
     }
 
     componentDidUpdate() {
-        if (!this.state.userData && this.state.userId) {
-            DBUtil.getProfile(this.state.userId, (err, data) => {
+        if (!this.state.userData && this.state.authProfile) {
+            DBUtil.getProfile(this.state.authProfile.sub, (err, data) => {
                 if (err) {
                     console.log("Error fetching profile", err);
                 } else {
                     this.setState({ userData: data });
                 }
-            });
+            }, this.state.authProfile);
         }
     }
 }

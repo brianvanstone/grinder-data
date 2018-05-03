@@ -5,15 +5,28 @@ AWS.config.update({
     secretAccessKey: process.env.REACT_APP_AWS_SECRET_KEY
 });
 
-var newProfile = (userId) => {
-    return {
+var newProfile = (userId, authProfile) => {
+    var profile = {
         userId: userId,
         createdDate: Date.now()
+    };
+
+    if (authProfile) {
+        for (var key in authProfile) {
+            if (key === 'sub') continue;
+            if (key === 'updated_at') continue;
+
+            profile[key] = authProfile[key];
+        }
     }
+    console.log(profile);
+
+    return profile;
 }
 
-module.exports.createProfile = (userId, callback) => {
-    this.saveProfile(newProfile(userId), callback);
+module.exports.createProfile = (userId, callback, authProfile) => {
+    var profile = newProfile(userId, authProfile);
+    this.saveProfile(profile, callback);
 };
 
 module.exports.saveProfile = (profile, callback) => {
@@ -31,7 +44,7 @@ module.exports.saveProfile = (profile, callback) => {
     });
 };
 
-module.exports.getProfile = (userId, callback) => {
+module.exports.getProfile = (userId, callback, authProfile) => {
     var docClient = this.getDynamoClient();
     var getParams = {
         TableName: "UserData",
@@ -44,7 +57,7 @@ module.exports.getProfile = (userId, callback) => {
             if (!data) {
                 callback(err);
             } else {
-                this.createProfile(userId, callback);
+                this.createProfile(userId, callback, authProfile);
             }
         } else {
             callback(null, data.Item);
