@@ -3,12 +3,14 @@ import Auth from "../../Auth";
 
 var AWS = require('aws-sdk');
 AWS.config.update({
-    region: 'us-east-2',
-    accessKeyId: "AKIAJKYD742Y56SH4MVQ",
-    secretAccessKey: "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"
+    region: process.env.REACT_APP_AWS_REGION,
+    accessKeyId: process.env.REACT_APP_AWS_KEY_ID,
+    secretAccessKey: process.env.REACT_APP_AWS_SECRET_KEY
 });
 
 var auth = new Auth();
+
+var DBUtil = require('../../util/DBUtil');
 
 export default class AuthenticatedComponent extends React.Component {
 
@@ -49,35 +51,11 @@ export default class AuthenticatedComponent extends React.Component {
 
     componentDidUpdate() {
         if (!this.state.userData && this.state.userId) {
-            var docClient = new AWS.DynamoDB.DocumentClient({ apiVersion: '2012-08-10' });
-            var getParams = {
-                TableName: "UserData",
-                Key: {
-                    userId: this.state.userId
-                }
-            }
-            docClient.get(getParams, (err, data) => {
-                if (err || !data.Item.userId) {
-                    if (!data) {
-                        console.log("Error fetching profile", err);
-                    } else {
-                        var putParams = {
-                            TableName: "UserData",
-                            Item: {
-                                'userId': this.state.userId,
-                                createdDate: Date.now()
-                            }
-                        }
-                        docClient.put(putParams, (err, data) => {
-                            if (err) {
-                                console.log("Unexpected error creating profile", err);
-                            } else {
-                                this.setState({ userData: data.Item })
-                            }
-                        });
-                    }
+            DBUtil.getProfile(this.state.userId, (err, data) => {
+                if (err) {
+                    console.log("Error fetching profile", err);
                 } else {
-                    this.setState({ userData: data.Item });
+                    this.setState({ userData: data });
                 }
             });
         }
