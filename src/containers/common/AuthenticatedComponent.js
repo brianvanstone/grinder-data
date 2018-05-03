@@ -1,13 +1,6 @@
 import React from "react";
 import Auth from "../../Auth";
 
-var AWS = require('aws-sdk');
-AWS.config.update({
-    region: process.env.REACT_APP_AWS_REGION,
-    accessKeyId: process.env.REACT_APP_AWS_KEY_ID,
-    secretAccessKey: process.env.REACT_APP_AWS_SECRET_KEY
-});
-
 var auth = new Auth();
 
 var DBUtil = require('../../util/DBUtil');
