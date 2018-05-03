@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Route, Switch, Link } from "react-router-dom";
-import { Form, FormGroup, ControlLabel, FormControl, HelpBlock } from "react-bootstrap";
+import { ControlLabel, Form, FormControl, FormGroup, HelpBlock } from "react-bootstrap";
+import { Link, Route, Switch } from "react-router-dom";
 
 var DBUtil = require("../util/DBUtil");
 

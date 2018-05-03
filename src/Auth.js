@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 import auth0 from 'auth0-js';
+import React, { Component } from 'react';
 import AuthLoader from "./containers/common/AuthLoader";
 
 export default class Auth extends Component {

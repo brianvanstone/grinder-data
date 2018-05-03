@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { Nav, Navbar, NavItem } from "react-bootstrap";
+import { Nav, NavItem, Navbar } from "react-bootstrap";
 import { LinkContainer } from 'react-router-bootstrap';
+import { Link, Route, Switch } from "react-router-dom";
 import Home from "../Home";
 import NotFound from "../NotFound";
 

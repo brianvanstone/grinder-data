@@ -1,13 +1,12 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
-import { Nav, Navbar, NavItem } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import Dashboard from "../Dashboard";
-import Profile from "../Profile";
-import AuthenticatedComponent from "./AuthenticatedComponent";
-import AuthLoader from "./AuthLoader";
-import Devices from "../Devices";
+import { Nav, NavItem, Navbar } from "react-bootstrap";
 import { LinkContainer } from 'react-router-bootstrap';
+import { Link, Route, Switch } from "react-router-dom";
+import Dashboard from "../Dashboard";
+import Devices from "../Devices";
+import Profile from "../Profile";
+import AuthLoader from "./AuthLoader";
+import AuthenticatedComponent from "./AuthenticatedComponent";
 
 export default class AuthLayout extends AuthenticatedComponent {
     render() {
