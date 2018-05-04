@@ -57,3 +57,5 @@ typings/
 # local dotenv environment variables file
 .env*.local
 
+# git config
+.gitconfig
