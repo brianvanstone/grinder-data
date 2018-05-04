@@ -13,7 +13,7 @@ export default class AuthenticatedComponent extends React.Component {
         this.state = {
             displayed: false,
             authProfile: "",
-            userData: ""
+            profile: ""
         };
 
         auth.getProfile((err, userProfile) => {
@@ -43,12 +43,12 @@ export default class AuthenticatedComponent extends React.Component {
     }
 
     componentDidUpdate() {
-        if (!this.state.userData && this.state.authProfile) {
+        if (!this.state.profile && this.state.authProfile) {
             DBUtil.getProfile(this.state.authProfile.sub, (err, data) => {
                 if (err) {
                     console.log("Error fetching profile", err);
                 } else {
-                    this.setState({ userData: data });
+                    this.setState({ profile: data });
                 }
             }, this.state.authProfile);
         }

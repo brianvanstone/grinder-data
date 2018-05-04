@@ -40,9 +40,9 @@ export default class AuthLayout extends AuthenticatedComponent {
                     </Navbar>
                     <div id="content">
                         <Switch>
-                            <Route path="/dashboard" render={(props) => <Dashboard {...props} user={this.state.userData} />} />
-                            <Route path="/profile" render={(props) => <Profile {...props} user={this.state.userData} />} />
-                            <Route path="/devices" render={(props) => <Devices {...props} user={this.state.userData} />} />
+                            <Route path="/dashboard" render={(props) => <Dashboard {...props} user={this.state.profile} />} />
+                            <Route path="/profile" render={(props) => <Profile {...props} user={this.state.profile} />} />
+                            <Route path="/devices" render={(props) => <Devices {...props} user={this.state.profile} />} />
                         </Switch>
                     </div>
                     <div>
