@@ -1,8 +1,6 @@
-import React from "react";
-import AuthenticatedComponent from "./common/AuthenticatedComponent";
+import React, { Component } from "react";
 
-export default class Dashboard extends AuthenticatedComponent {
-
+export default class Dashboard extends Component {
     render() {
         return (
             <div className="App container">

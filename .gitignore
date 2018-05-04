@@ -54,6 +54,8 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-.env
+# local dotenv environment variables file
+.env*.local
 
+# git config
+.gitconfig

@@ -1,16 +1,14 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
-import { Nav, Navbar, NavItem } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import Dashboard from "../Dashboard";
-import Profile from "../Profile";
-import AuthenticatedComponent from "./AuthenticatedComponent";
-import AuthLoader from "./AuthLoader";
-import Devices from "../Devices";
+import { Nav, NavItem, Navbar } from "react-bootstrap";
 import { LinkContainer } from 'react-router-bootstrap';
+import { Link, Route, Switch } from "react-router-dom";
+import Dashboard from "../Dashboard";
+import Devices from "../Devices";
+import Profile from "../Profile";
+import AuthLoader from "./AuthLoader";
+import AuthenticatedComponent from "./AuthenticatedComponent";
 
 export default class AuthLayout extends AuthenticatedComponent {
-
     render() {
         if (this.state.displayed) {
             return (
@@ -35,19 +33,20 @@ export default class AuthLayout extends AuthenticatedComponent {
                                 </LinkContainer>
                             </Nav>
                             <Nav pullRight>
-                                {/* <LinkContainer to=""> */}
-                                    <NavItem onClick={() => this.logout('/')}>Logout</NavItem>
-                                {/* </LinkContainer> */}
+                                <NavItem onClick={() => this.logout('/')}>Logout</NavItem>
                                 <NavItem href="https://github.com/brianvanstone/grinder-data"><img src="github.png" alt="github" /></NavItem>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
                     <div id="content">
                         <Switch>
-                            <Route path="/dashboard" component={Dashboard} />
-                            <Route path="/profile" component={Profile} />
-                            <Route path="/devices" component={Devices} />
+                            <Route path="/dashboard" render={(props) => <Dashboard {...props} user={this.state.profile} />} />
+                            <Route path="/profile" render={(props) => <Profile {...props} user={this.state.profile} />} />
+                            <Route path="/devices" render={(props) => <Devices {...props} user={this.state.profile} />} />
                         </Switch>
+                    </div>
+                    <div>
+                        <pre><code>{JSON.stringify(this.state)}</code></pre>
                     </div>
                 </div>
             );
