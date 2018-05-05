@@ -23,3 +23,10 @@ h1, h2, h3, h4, h5, h6 {
   top: 35%;
   z-index: 1000;
 }
+#profilepic {
+  padding: 0px;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  padding: 2px;
+}

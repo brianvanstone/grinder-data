@@ -67,9 +67,12 @@ export default class Profile extends Component {
                     }} />
                     <Route path="/profile" render={(props) => {
                         return (
-                            <div id="profile">
+                            <div id="profileDisplay">
+                                <h1>Profile</h1>
                                 <Link to="/profile/edit">edit</Link>
-                                <pre style={{ textAlign: "left" }}>{JSON.stringify(this.props, null, 2)}</pre>
+                                <div id="profile">
+                                    <pre style={{ textAlign: "left" }}>{JSON.stringify(this.props.user, null, 2)}</pre>
+                                </div>
                             </div>
                         )
                     }} />

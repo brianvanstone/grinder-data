@@ -16,7 +16,7 @@ export default class AuthLayout extends AuthenticatedComponent {
                     <Navbar fluid collapseOnSelect fixedTop>
                         <Navbar.Header>
                             <Navbar.Brand>
-                                <Link to="/"><img src="/home-icon.jpg" width="30" alt="home" /></Link>
+                                <Link to="/"><img src="/home-icon.ico" width="30" alt="home" /></Link>
                             </Navbar.Brand>
                             <Navbar.Toggle />
                         </Navbar.Header>
@@ -28,13 +28,15 @@ export default class AuthLayout extends AuthenticatedComponent {
                                 <LinkContainer to="/devices">
                                     <NavItem onClick={null}>Devices</NavItem>
                                 </LinkContainer>
-                                <LinkContainer to="/profile">
-                                    <NavItem onClick={null}>Profile</NavItem>
-                                </LinkContainer>
                             </Nav>
                             <Nav pullRight>
+                                <li role="presentation">
+                                    <Link to="/profile">Hi, {this.state.profile.given_name}</Link>
+                                </li>
                                 <NavItem onClick={() => this.logout('/')}>Logout</NavItem>
-                                <NavItem href="https://github.com/brianvanstone/grinder-data"><img src="github.png" alt="github" /></NavItem>
+                                <li role="presentation">
+                                    <img id="profilepic" src={this.state.profile.picture} width="32px" />
+                                </li>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
@@ -44,9 +46,6 @@ export default class AuthLayout extends AuthenticatedComponent {
                             <Route path="/profile" render={(props) => <Profile {...props} user={this.state.profile} />} />
                             <Route path="/devices" render={(props) => <Devices {...props} user={this.state.profile} />} />
                         </Switch>
-                    </div>
-                    <div>
-                        <pre><code>{JSON.stringify(this.state)}</code></pre>
                     </div>
                 </div>
             );

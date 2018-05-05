@@ -12,7 +12,7 @@ export default class PublicLayout extends Component {
                 <Navbar fluid collapseOnSelect fixedTop>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <Link to="/"><img src="/home-icon.jpg" width="30" alt="home" /></Link>
+                            <Link to="/"><img src="/home-icon.ico" width="30" alt="home" /></Link>
                         </Navbar.Brand>
                         <Navbar.Toggle />
                     </Navbar.Header>
@@ -33,7 +33,12 @@ export default class PublicLayout extends Component {
                 <Navbar fluid collapseOnSelect fixedBottom>
                     <Navbar.Collapse>
                         <Nav pullRight>
-                            <NavItem href="https://github.com/brianvanstone/grinder-data">Powered By: <img src="github.png" alt="github" /></NavItem>
+                            <NavItem href="https://github.com/brianvanstone/grinder-data">
+                                <img src="github.png" alt="github" width="32px" />
+                            </NavItem>
+                            <NavItem href="https://reactjs.org/">
+                                <img src="react.ico" alt="React JS" width="32px" />
+                            </NavItem>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
