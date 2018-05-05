@@ -15,7 +15,6 @@ export default class AuthLoader extends Component {
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      this.setState({ intervalSet: true });
       if (this.auth.isAuthenticated()) {
         this.stop();
         this.setState({ loading: false });
