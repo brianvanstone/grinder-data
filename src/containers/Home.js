@@ -14,7 +14,7 @@ export default class Home extends Component {
     componentWillMount() {
         var request = require('request');
         var obj = this;
-        request.get('https://raw.githubusercontent.com/brianvanstone/grinder-data/creating-project/README.md', function (error, response, body) {
+        request.get('https://raw.githubusercontent.com/brianvanstone/grinder-data/master/README.md', function (error, response, body) {
             if (!error && response.statusCode === 200) {
                 obj.setState({
                     markdown: body
