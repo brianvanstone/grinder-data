@@ -35,7 +35,7 @@ export default class AuthLayout extends AuthenticatedComponent {
                                 </li>
                                 <NavItem onClick={() => this.logout('/')}>Logout</NavItem>
                                 <li role="presentation">
-                                    <img id="profilepic" src={this.state.profile.picture} width="32px" />
+                                    <Link  id="profilelink" to="/profile"><img id="profilepic" src={this.state.profile.picture} width="32px" alt=""/></Link>
                                 </li>
                             </Nav>
                         </Navbar.Collapse>
