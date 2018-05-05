@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch } from "react-router-dom";
 import Auth from "./Auth";
-import AuthLayout from "./containers/common/AuthLayout";
-import PublicLayout from "./containers/common/PublicLayout";
+import AuthLayout from "./containers/layout/AuthLayout";
+import PublicLayout from "./containers/layout/PublicLayout";
 
 class App extends Component {
 

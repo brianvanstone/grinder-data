@@ -5,8 +5,8 @@ import { Link, Route, Switch } from "react-router-dom";
 import Dashboard from "../Dashboard";
 import Devices from "../Devices";
 import Profile from "../Profile";
-import AuthLoader from "./AuthLoader";
-import AuthenticatedComponent from "./AuthenticatedComponent";
+import AuthLoader from "../common/AuthLoader";
+import AuthenticatedComponent from "../common/AuthenticatedComponent";
 
 export default class AuthLayout extends AuthenticatedComponent {
     render() {

@@ -19,7 +19,6 @@ var newProfile = (userId, authProfile) => {
             profile[key] = authProfile[key];
         }
     }
-    console.log(profile);
 
     return profile;
 }
