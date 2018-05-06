@@ -9,13 +9,14 @@ export default class Auth extends Component {
         if (this.getSession().expires_at) {
             this.scheduleRenewal();
         }
+        console.log(process.env);
     }
 
     authConfig = (path) => {
         return {
             domain: 'grinder.auth0.com',
             clientID: 'aJh7jg1toaADHOTncRWHKxk7ttT3PNI5',
-            redirectUri: 'http://localhost:3000/auth?redirect=' + path,
+            redirectUri: `${process.env.REACT_APP_AUTH_URI}?redirect=` + path,
             audience: 'https://grinder.auth0.com/userinfo',
             responseType: 'token id_token',
             scope: 'openid profile email'
