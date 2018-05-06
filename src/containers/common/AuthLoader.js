@@ -14,13 +14,14 @@ export default class AuthLoader extends Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => {
-      this.setState({ intervalSet: true });
-      if (this.auth.isAuthenticated()) {
-        this.stop();
-        this.setState({ loading: false });
-      }
-    }, 100);
+    if (!this.interval) {
+      this.interval = setInterval(() => {
+        if (this.auth.isAuthenticated()) {
+          this.stop();
+          this.setState({ loading: false });
+        }
+      }, 100);
+    }
   }
 
   componentWillUnmount() {
@@ -29,6 +30,7 @@ export default class AuthLoader extends Component {
 
   stop() {
     clearInterval(this.interval);
+    this.interval = undefined;
     if (this.props.path) {
       this.props.history.push(this.props.path);
     }

@@ -5,8 +5,8 @@ import { Link, Route, Switch } from "react-router-dom";
 import Dashboard from "../Dashboard";
 import Devices from "../Devices";
 import Profile from "../Profile";
-import AuthLoader from "./AuthLoader";
-import AuthenticatedComponent from "./AuthenticatedComponent";
+import AuthLoader from "../common/AuthLoader";
+import AuthenticatedComponent from "../common/AuthenticatedComponent";
 
 export default class AuthLayout extends AuthenticatedComponent {
     render() {
@@ -35,7 +35,7 @@ export default class AuthLayout extends AuthenticatedComponent {
                                 </li>
                                 <NavItem onClick={() => this.logout('/')}>Logout</NavItem>
                                 <li role="presentation">
-                                    <img id="profilepic" src={this.state.profile.picture} width="32px" />
+                                    <Link  id="profilelink" to="/profile"><img id="profilepic" src={this.state.profile.picture} width="32px" alt=""/></Link>
                                 </li>
                             </Nav>
                         </Navbar.Collapse>
