@@ -10,8 +10,10 @@ before_install:
 script:
   - if [ "$TRAVIS_BRANCH" = "master" ]; then
       npm run build;
+      export BUCKET=project-elephant;
     else
       npm run build-dev;
+      export BUCKET=project-elephant-dev;
     fi
 deploy:
   on:
