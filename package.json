@@ -17,7 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build-dev": "dotenv -e .env.development react-scripts build && aws s3 sync build/ s3://project-elephant-dev",
+    "build-dev": "dotenv -e .env.development react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
