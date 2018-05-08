@@ -15,21 +15,12 @@ script:
     fi
 deploy:
   on:
-    branch: master
+    all_branches: true
+    condition: $TRAVIS_BRANCH =~ ^master|develop$
   provider: s3
   access_key_id: $AWS_ACCESS_KEY_ID
   secret_access_key: $AWS_SECRET_KEY
   bucket: project-elephant
-  skip_cleanup: true
-  local_dir: build
-  cache_control: "max-age=21600"
-deploy:
-  on:
-    branch: develop
-  provider: s3
-  access_key_id: $AWS_ACCESS_KEY_ID
-  secret_access_key: $AWS_SECRET_KEY
-  bucket: project-elephant-dev
   skip_cleanup: true
   local_dir: build
   cache_control: "max-age=21600"
