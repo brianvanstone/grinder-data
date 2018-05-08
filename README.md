@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/brianvanstone/grinder-data.svg?branch=master)](https://travis-ci.org/brianvanstone/grinder-data)
+
 # Project Elephant
 
 The goal of Project Elephant is to provide a clever, yet occasionally forgetful, consumer with a passive, accurate, and user-friendly means to track the amount of material traveling through an herb grinder. This data is then presented to the consumer via an online dashboard or mobile app, for easy analysis of consumption over different time periods.
