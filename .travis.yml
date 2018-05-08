@@ -22,7 +22,7 @@ deploy:
   provider: s3
   access_key_id: $AWS_ACCESS_KEY_ID
   secret_access_key: $AWS_SECRET_KEY
-  bucket: project-elephant
+  bucket: $BUCKET
   skip_cleanup: true
   local_dir: build
   cache_control: "max-age=21600"
