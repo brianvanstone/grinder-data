@@ -8,7 +8,11 @@ before_install:
   - pip install --user awscli
   - export PATH=$PATH:$HOME/.local/bin
 script:
-  - if [ "$TRAVIS_BRANCH" = "master" ] then npm run build else npm run build-dev fi
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then
+      npm run build;
+    else
+      npm run build-dev;
+    fi
 deploy:
   on:
     branch: master
