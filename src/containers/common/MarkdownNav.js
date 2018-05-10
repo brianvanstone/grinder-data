@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { chevronCircleRight } from 'react-icons-kit/fa/chevronCircleRight';
 import { chevronRight } from 'react-icons-kit/fa/chevronRight';
 import { plus } from 'react-icons-kit/fa/plus';
 import { ic_aspect_ratio } from 'react-icons-kit/md/ic_aspect_ratio';
@@ -12,7 +13,7 @@ import Icon from "./Icon";
 export default class MarkdownNav extends Component {
 
     navConfig = [
-        { key: "/documentation", title: 'Overview', icon: ic_aspect_ratio },
+        { key: "/documentation", title: 'Overview', icon: chevronCircleRight },
         { key: "/documentation/architecture", title: 'System Architecture', icon: chevronRight },
         { key: "/documentation/dataModel", title: 'Data Model', icon: chevronRight },
         {
@@ -27,7 +28,7 @@ export default class MarkdownNav extends Component {
         { key: "/documentation/devops", title: 'Devops Pipeline', icon: chevronRight }
     ];
 
-    
+
 
     NavMain = {
         dashboard: { title: 'Dashboard', icon: ic_aspect_ratio },
@@ -39,8 +40,8 @@ export default class MarkdownNav extends Component {
         //dynamically created the navs
         return (
             <Nav key={obj.key} id={obj.key}>
-                    <NavIcon><Icon icon={obj.icon} /></NavIcon>
-                    <NavText> {obj.title} </NavText>
+                <NavIcon><Icon size="14" icon={obj.icon} /></NavIcon>
+                <NavText> {obj.title} </NavText>
                 {obj.items ? obj.items.map(this.wrapNav) : <div />}
             </Nav>
         );
@@ -51,9 +52,9 @@ export default class MarkdownNav extends Component {
             highlightBgColor="#eee"
             defaultSelected="/documentation"
             highlightColor="#E91E63"
-            onItemSelection={ (id) => {
+            onItemSelection={(id) => {
                 history.push(id);
-            } }
+            }}
         >
             <this.SeparatorTitle><div>Documentation</div></this.SeparatorTitle>
             {this.navConfig.map(this.wrapNav)}
@@ -63,21 +64,18 @@ export default class MarkdownNav extends Component {
     render() {
         var history = this.props.history;
         return (
-            <div>
-                <this.BaseContainer
-                    style={{
-                        background: '#FFF',
-                        color: '#444',
-                        boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
-                        float: 'left',
-                        marginLeft: '10px',
-                        height: '100%'
-                    }}
-                >
-                    <this.DocNav history={history}/>
-                </this.BaseContainer>
-                
-            </div>
+            <this.BaseContainer
+                style={{
+                    background: '#FFF',
+                    color: '#444',
+                    boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
+                    float: 'left',
+                    marginLeft: '10px',
+                    height: '100%'
+                }}
+            >
+                <this.DocNav history={history} />
+            </this.BaseContainer>
         );
     }
 
