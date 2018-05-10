@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { Nav, NavItem, Navbar } from "react-bootstrap";
+import { home } from 'react-icons-kit/icomoon/home';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link, Route, Switch } from "react-router-dom";
 import Home from "../Home";
+import Icon from "../common/Icon";
 import NotFound from "../common/NotFound";
 
 export default class PublicLayout extends Component {
@@ -12,7 +14,7 @@ export default class PublicLayout extends Component {
                 <Navbar fluid collapseOnSelect fixedTop>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <Link to="/"><img src="/home-icon.ico" width="30" alt="home" /></Link>
+                            <Link to="/"><Icon icon={home} alt="home" /></Link>
                         </Navbar.Brand>
                         <Navbar.Toggle />
                     </Navbar.Header>

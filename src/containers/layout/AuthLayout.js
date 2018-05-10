@@ -1,12 +1,15 @@
 import React from "react";
 import { Nav, NavItem, Navbar } from "react-bootstrap";
+import { home } from 'react-icons-kit/icomoon/home';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link, Route, Switch } from "react-router-dom";
 import Dashboard from "../Dashboard";
 import Devices from "../Devices";
+import Documentation from "../Documentation";
 import Profile from "../Profile";
 import AuthLoader from "../common/AuthLoader";
 import AuthenticatedComponent from "../common/AuthenticatedComponent";
+import Icon from "../common/Icon";
 
 export default class AuthLayout extends AuthenticatedComponent {
     render() {
@@ -16,7 +19,7 @@ export default class AuthLayout extends AuthenticatedComponent {
                     <Navbar fluid collapseOnSelect fixedTop>
                         <Navbar.Header>
                             <Navbar.Brand>
-                                <Link to="/"><img src="/home-icon.ico" width="30" alt="home" /></Link>
+                                <Link to="/"><Icon icon={home} alt="home" /></Link>
                             </Navbar.Brand>
                             <Navbar.Toggle />
                         </Navbar.Header>
@@ -27,6 +30,9 @@ export default class AuthLayout extends AuthenticatedComponent {
                                 </LinkContainer>
                                 <LinkContainer to="/devices">
                                     <NavItem onClick={null}>Devices</NavItem>
+                                </LinkContainer>
+                                <LinkContainer to="/documentation">
+                                    <NavItem onClick={null}>Documentation</NavItem>
                                 </LinkContainer>
                             </Nav>
                             <Nav pullRight>
@@ -45,6 +51,7 @@ export default class AuthLayout extends AuthenticatedComponent {
                             <Route path="/dashboard" render={(props) => <Dashboard {...props} user={this.state.profile} />} />
                             <Route path="/profile" render={(props) => <Profile {...props} user={this.state.profile} />} />
                             <Route path="/devices" render={(props) => <Devices {...props} user={this.state.profile} />} />
+                            <Route path="/documentation" render={(props) => <Documentation {...props} user={this.state.profile} />} />
                         </Switch>
                     </div>
                 </div>

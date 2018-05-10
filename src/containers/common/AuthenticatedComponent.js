@@ -3,8 +3,6 @@ import Auth from "../../Auth";
 
 var auth = new Auth();
 
-var DBUtil = require('../../util/DBUtil');
-
 export default class AuthenticatedComponent extends React.Component {
 
     constructor(props) {
@@ -44,13 +42,20 @@ export default class AuthenticatedComponent extends React.Component {
 
     componentDidUpdate() {
         if (!this.state.profile && this.state.authProfile) {
-            DBUtil.getProfile(this.state.authProfile.sub, (err, data) => {
-                if (err) {
-                    console.log("Error fetching profile", err);
-                } else {
-                    this.setState({ profile: data });
-                }
-            }, this.state.authProfile);
+            // DBUtil.getProfile(this.state.authProfile.sub, (err, data) => {
+            //     if (err) {
+            //         console.log("Error fetching profile", err);
+            //     } else {
+            //         this.setState({ profile: data });
+            //     }
+            // }, this.state.authProfile);
+            console.log("not yet calling lambdas, no real data to display for user profile");
+            this.setState({ profile: {
+                name: "Sample Profile",
+                userId: "blahblahblah",
+                picture: "url to pic",
+                etc: "more shit"
+            }});
         }
     }
 }

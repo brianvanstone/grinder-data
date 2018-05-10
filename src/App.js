@@ -13,6 +13,7 @@ class App extends Component {
         <Route path="/dashboard" component={AuthLayout} />
         <Route path="/profile" component={AuthLayout} />
         <Route path="/devices" component={AuthLayout} />
+        <Route path="/documentation" component={AuthLayout} />
         <Route path="*" component={PublicLayout} />
       </Switch>
     );

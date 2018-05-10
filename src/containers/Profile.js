@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { ControlLabel, Form, FormControl, FormGroup, HelpBlock } from "react-bootstrap";
 import { Link, Route, Switch } from "react-router-dom";
 
-var DBUtil = require("../util/DBUtil");
-
 export default class Profile extends Component {
     constructor(props) {
         super(props);
@@ -41,7 +39,8 @@ export default class Profile extends Component {
 
     saveProfile(event) {
         event.preventDefault();
-        DBUtil.saveProfile(this.state);
+        //DBUtil.saveProfile(this.state);
+        console.log("profile saving not yet implemented");
     }
 
     render() {
