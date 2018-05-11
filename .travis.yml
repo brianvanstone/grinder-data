@@ -1,29 +1,29 @@
 language: node_js
 node_js:
-  - "6.10.3"
+- 6.10.3
 cache:
   directories:
   - node_modules
 before_install:
-  - pip install --user awscli
-  - export PATH=$PATH:$HOME/.local/bin
+- pip install --user awscli
+- export PATH=$PATH:$HOME/.local/bin
 script:
-  - if [ "$TRAVIS_BRANCH" = "master" ]; then
-      npm run build;
-      export BUCKET=project-elephant;
-    else
-      npm run build-dev;
-      export BUCKET=project-elephant-dev;
-    fi
+- if [ "$TRAVIS_BRANCH" = "master" ]; then npm run build; export BUCKET=project-elephant;
+  else npm run build-dev; export BUCKET=project-elephant-dev; fi
 deploy:
   on:
     all_branches: true
-    condition: $TRAVIS_BRANCH =~ ^master|develop$
+    condition: "$TRAVIS_BRANCH =~ ^master|develop$"
   provider: s3
-  access_key_id: $AWS_ACCESS_KEY_ID
-  secret_access_key: $AWS_SECRET_KEY
-  bucket: $BUCKET
+  access_key_id: "$AWS_ACCESS_KEY_ID"
+  secret_access_key: "$AWS_SECRET_KEY"
+  bucket: "$BUCKET"
   skip_cleanup: true
   local_dir: build
-  cache_control: "max-age=21600"
-  region: $AWS_DEFAULT_REGION
+  cache_control: max-age=21600
+  region: "$AWS_DEFAULT_REGION"
+notifications:
+  slack:
+    secure: f66JDRBZz2kmpbyHN7PyVrvNe+jKt50n1Fd0Icwn8L5rO5RksK9ooHAhOTaAfaWrNQidpU4+PbYe6hr9hwwVRJ2De2c9oPI5sYLt4PCLxB4JxP4IcEgNDmcOcYjI+KI2uC4ARUPtsc5DY2p7TZS+wBOn85P6/Y27NFB3xoCJNGLYXO4SFCskSD58C+Zw8CCgHEnKaRYC0OSnZhUE+hplOkuy3czKtSEISG3zX29+Pouec3of1GLFuRatpdvtT675cWi6lu2G4p8lI/Tr6hs0kviYAo17uezSn9Ivj3mFuj4B2SrFy5/zl4p3/bjbEfiddTxCSdNq8yP0ynVBBD39PfIU9zx58G4g8ft1wGZNpoKh6VsbVSY/eA2UC7hLPI7FTqQmKIIMS6GhjOeopBXSAHa9z+SxDOkXiq31fleo5Z6w5x2pjy1Y3574jU3WtUn0GGiXgrFA07h64ZnxI6g34ouf+juGxhvEIaFnH8fJP2JwyjgzkqWf+yr87RKRSYbPjFsOteRaouyDbXlSjnKEacwP8kZLHX0xyrwubNjqhMWFzpFrzjcwJB4Au+TzVACmywWIv6+yYWcwiMa5k2b40LlAzJsH9A7dCG5I8CoggKqt41EnXrXaAvAuOI13CTHL0H+X+iuRb9q3CWPO9YQJvIphbgRE2yMQ6lKiQyOMI+0=
+    on_success: change
+    on_failure: always
