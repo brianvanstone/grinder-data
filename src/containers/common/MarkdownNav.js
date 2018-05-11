@@ -1,10 +1,6 @@
 import React, { Component } from "react";
-import { chevronCircleRight } from 'react-icons-kit/fa/chevronCircleRight';
-import { chevronRight } from 'react-icons-kit/fa/chevronRight';
+import { minus } from 'react-icons-kit/fa/minus';
 import { plus } from 'react-icons-kit/fa/plus';
-import { ic_aspect_ratio } from 'react-icons-kit/md/ic_aspect_ratio';
-import { ic_business_center } from 'react-icons-kit/md/ic_business_center';
-import { ic_format_list_bulleted } from 'react-icons-kit/md/ic_format_list_bulleted';
 import SideNav, { Nav, NavIcon, NavText } from 'react-sidenav';
 import styled from 'styled-components';
 import Icon from "./Icon";
@@ -13,9 +9,9 @@ import Icon from "./Icon";
 export default class MarkdownNav extends Component {
 
     navConfig = [
-        { key: "/documentation", title: 'Overview', icon: chevronCircleRight },
-        { key: "/documentation/architecture", title: 'System Architecture', icon: chevronRight },
-        { key: "/documentation/dataModel", title: 'Data Model', icon: chevronRight },
+        { key: "/documentation", title: 'Overview', icon: minus },
+        { key: "/documentation/architecture", title: 'System Architecture', icon: minus },
+        { key: "/documentation/dataModel", title: 'Data Model', icon: minus },
         {
             key: "/documentation/dataAccessLayer",
             title: 'Data Access Layer',
@@ -25,16 +21,8 @@ export default class MarkdownNav extends Component {
                 { key: "pubapi", title: 'Public API' },
             ]
         },
-        { key: "/documentation/devops", title: 'Devops Pipeline', icon: chevronRight }
+        { key: "/documentation/devops", title: 'Devops Pipeline', icon: minus }
     ];
-
-
-
-    NavMain = {
-        dashboard: { title: 'Dashboard', icon: ic_aspect_ratio },
-        products: { title: 'Products', icon: ic_business_center },
-        orders: { title: 'Orders', icon: ic_format_list_bulleted }
-    };
 
     wrapNav = (obj) => {
         //dynamically created the navs
@@ -45,20 +33,6 @@ export default class MarkdownNav extends Component {
                 {obj.items ? obj.items.map(this.wrapNav) : <div />}
             </Nav>
         );
-    };
-
-    DocNav = ({ history }) => {
-        return <SideNav
-            highlightBgColor="#eee"
-            defaultSelected="/documentation"
-            highlightColor="#E91E63"
-            onItemSelection={(id) => {
-                history.push(id);
-            }}
-        >
-            <this.SeparatorTitle><div>Documentation</div></this.SeparatorTitle>
-            {this.navConfig.map(this.wrapNav)}
-        </SideNav>;
     };
 
     render() {
@@ -82,7 +56,6 @@ export default class MarkdownNav extends Component {
     BaseContainer = props =>
         <div
             style={{
-                display: 'inline-block',
                 paddingTop: 16,
                 paddingBottom: 16,
                 fontFamily: 'Roboto',
@@ -99,6 +72,20 @@ export default class MarkdownNav extends Component {
         margin: 10px 12px;
         padding: 4px 12px 2px;
     `;
+
+    DocNav = ({ history }) => {
+        return <SideNav
+            highlightBgColor="#eee"
+            defaultSelected="/documentation"
+            highlightColor="#E91E63"
+            onItemSelection={(id) => {
+                history.push(id);
+            }}
+        >
+            <this.SeparatorTitle><div>Documentation</div></this.SeparatorTitle>
+            {this.navConfig.map(this.wrapNav)}
+        </SideNav>;
+    };
 
     SeparatorTitle = props => {
         return (
