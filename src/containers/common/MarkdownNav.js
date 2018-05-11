@@ -9,26 +9,25 @@ import Icon from "./Icon";
 export default class MarkdownNav extends Component {
 
     navConfig = [
-        { key: "/documentation", title: 'Overview', icon: minus },
-        { key: "/documentation/architecture", title: 'System Architecture', icon: minus },
-        { key: "/documentation/dataModel", title: 'Data Model', icon: minus },
+        { path: "/documentation", title: 'Overview' },
+        { path: "/documentation/architecture", title: 'System Architecture' },
+        { path: "/documentation/dataModel", title: 'Data Model' },
         {
-            key: "/documentation/dataAccessLayer",
+            path: "/documentation/dataAccessLayer",
             title: 'Data Access Layer',
-            icon: plus,
             items: [
-                { key: "apiSchema", title: 'API Schema' },
-                { key: "pubapi", title: 'Public API' },
+                { path: "apiSchema", title: 'API Schema' },
+                { path: "pubapi", title: 'Public API' },
             ]
         },
-        { key: "/documentation/devops", title: 'Devops Pipeline', icon: minus }
+        { path: "/documentation/devops", title: 'Devops Pipeline' }
     ];
 
     wrapNav = (obj) => {
         //dynamically created the navs
         return (
-            <Nav key={obj.key} id={obj.key}>
-                <NavIcon><Icon size="14" icon={obj.icon} /></NavIcon>
+            <Nav key={obj.path} id={obj.path}>
+                <NavIcon><Icon size="14" icon={obj.items ? plus : minus} /></NavIcon>
                 <NavText> {obj.title} </NavText>
                 {obj.items ? obj.items.map(this.wrapNav) : <div />}
             </Nav>
